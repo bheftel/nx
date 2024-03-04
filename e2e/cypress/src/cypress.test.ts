@@ -80,7 +80,7 @@ describe('env vars', () => {
         setCypressWebServerTimeout(`apps/${myapp}-e2e/cypress.config.ts`);
         // contains the correct output and works
         const run1 = runCLI(
-          `e2e ${myapp}-e2e --config \\'{\\"env\\":{\\"cliArg\\":\\"i am from the cli args\\"}}\\'`
+          `e2e ${myapp}-e2e --config \\"{\\\\"env\\\\":{\\\\"cliArg\\\\":\\\\"i am from the cli args\\\\"}}\\"`
         );
         expect(run1).toContain('All specs passed!');
         await killPort(4200);
@@ -113,7 +113,7 @@ export default defineConfig({
         );
 
         const run2 = runCLI(
-          `e2e ${myapp}-e2e --config \\'{\\"env\\":{\\"cliArg\\":\\"i am from the cli args\\"}}\\'`
+          `e2e ${myapp}-e2e --config \\"{\\\\"env\\\\":{\\\\"cliArg\\\\":\\\\"i am from the cli args\\\\"}}\\"`
         );
         expect(run2).toContain('All specs passed!');
         await killPort(4200);
