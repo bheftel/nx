@@ -282,8 +282,8 @@ function nodeProcess(
       childProcess.kill(signal);
 
     process.on('exit', processExitListener);
-    process.on('SIGTERM', processExitListener);
-    process.on('SIGINT', processExitListener);
+    process.on('SIGTERM', () => processExitListener('SIGTERM'));
+    process.on('SIGINT', () => processExitListener('SIGINT'));
     process.on('SIGQUIT', processExitListener);
 
     childProcess.stdout.on('data', (data) => {
